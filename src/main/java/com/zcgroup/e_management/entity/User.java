@@ -15,6 +15,7 @@ import java.io.Serializable;
 @TableName("user")
 public class User implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @TableField(value = "account")
     private String account;
     @TableField(value = "pass_word")

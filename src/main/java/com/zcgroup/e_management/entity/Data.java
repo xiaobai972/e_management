@@ -18,7 +18,7 @@ import java.sql.Date;
 @TableName("data")
 public class Data implements Serializable {
 
-
+    private static final long serialVersionUID = 2L;
     @TableField(value = "user_id")
     private String userId;
     @TableField(value = "location")

@@ -167,11 +167,11 @@ public class Server  {
                         OutputStream outputStream = null;
                         inputStream = socket.getInputStream();
                         outputStream = socket.getOutputStream();
-                       ObjectOutputStream objectOutputStream=new ObjectOutputStream(outputStream);
+                        ObjectOutputStream objectOutputStream=new ObjectOutputStream(outputStream);
                         DataInputStream dataInputStream = new DataInputStream(inputStream);
                         byte buffer[] = new byte[1024];
-                        dataInputStream.read(buffer);
-                        String account=new String(buffer, 0, buffer.length);
+                        int length=dataInputStream.read(buffer);
+                        String account=new String(buffer, 0,length);
                         User user=userService.getUserById(account);
                         objectOutputStream.writeObject(user);
                     } catch (Exception e) {

@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zcgroup.e_management.entity.User;
 import com.zcgroup.e_management.mapper.UserMapper;
+import com.zcgroup.e_management.networkCommunications.Server;
 import com.zcgroup.e_management.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,12 +16,17 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+    protected static final Logger logger = LoggerFactory.getLogger(Server.class);
     @Override
     public int addUser(User user) {
-
-        int res=-1;
-        res=userMapper.insert(user);
-        return res;
+        try {
+            int res = -1;
+            res = userMapper.insert(user);
+            return res;
+        }catch(Exception e){
+            logger.info("注册用户失败");
+            return -1;
+        }
     }
 
     @Override
