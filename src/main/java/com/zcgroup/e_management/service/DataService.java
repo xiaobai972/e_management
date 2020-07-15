@@ -1,7 +1,10 @@
 package com.zcgroup.e_management.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zcgroup.e_management.dto.DataDto;
 import com.zcgroup.e_management.entity.Data;
+
+import java.util.List;
 
 public interface DataService {
     /**
@@ -16,4 +19,6 @@ public interface DataService {
      * @return
      */
     public Page<Data> getDatas(Page page);
+
+    public List<DataDto> getHealthDatas();
 }

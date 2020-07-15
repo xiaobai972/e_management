@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Date;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -131,6 +132,7 @@ public class Server  {
                         ObjectInputStream ois = new ObjectInputStream(inputStream);
                         DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
                         Data data = (Data) ois.readObject();
+                        data.setTime(new Date());
                         int res=dataService.addData(data);
                         dataOutputStream.write((res+"").getBytes());
                     } catch (Exception e) {

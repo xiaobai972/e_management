@@ -15,7 +15,7 @@ import java.sql.Date;
 @AllArgsConstructor
 public class DataDto {
 
-
+    private String account;
     private String name;
 
     private String location;
@@ -24,8 +24,9 @@ public class DataDto {
 
     private String aroundInjection;
 
-    private Date time;
+    private String time;
 
+    public final static String ACCOUNT="account";
     public final static String NAME="name";
     public final static String LOCATION="location";
     public final static String TEMPERATURE="temperature";

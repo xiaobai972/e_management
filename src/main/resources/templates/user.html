@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息表</title>
+</head>
+<body>
+<table width="100%">
+    <tr>
+        <td width="90%">
+<table width="100%" height="40"  border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bordercolordark="#FFFFFF" bordercolorlight="#E6E6E6",id="tab">
+    <tr bgcolor="#eeeeee">
+        <td width="15%" height="24" align="center">账号(手机号)</td>
+        <td width="15%" align="center">姓名</td>
+        <td width="10%" align="center">性别</td>
+        <td width="10%" align="center">年龄</td>
+        <td width="20%" align="center">身份证号</td>
+        <td width="30%" align="center">家庭住址</td>
+    </tr>
+         <tr align="center" th:each="c:${users}">
+            <td align="center" th:text="${c.account}"></td>
+            <td align="center" th:text="${c.name}"></td>
+            <td align="center" th:text="${c.sex}"></td>
+            <td align="center" th:text="${c.age}"></td>
+            <td align="center" th:text="${c.personNumber}"></td>
+            <td align="center" th:text="${c.address}"></td>
+        </tr>
+</table>
+        </td>
+        <td width="10%">
+<table width="100%" height="40"  border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bordercolordark="#FFFFFF" bordercolorlight="#E6E6E6",id="tab">
+    <tr bgcolor="#eeeee">
+        <td width="10%" height="24" align="center">系统管理</td>
+    </tr>
+    <tr bgcolor="#eeee">
+        <td width="10%" height="24" align="center">
+        <a href="/manager/Users">用户信息</a>
+        </td>
+    </tr>
+    <tr bgcolor="#eeee">
+        <td width="10%" height="24" align="center">
+        <a href="/manager/HealthDatas">健康信息</a>
+        </td>
+    </tr>
+    </td>
+    </tr>
+</table>
+</table>
+</body>
+</html>

@@ -1,7 +1,10 @@
 package com.zcgroup.e_management.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zcgroup.e_management.entity.User;
+
+import java.util.List;
 
 
 public interface UserService {
@@ -23,5 +26,8 @@ public interface UserService {
      * 查询所有用户
      * @return
      */
-    public Page<User> getUsers(Page page);
+    public List<User> getUsers(int current, int size);
+
+
+    public Integer findAllCount() ;
 }

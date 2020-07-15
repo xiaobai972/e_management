@@ -1,6 +1,8 @@
 package com.zcgroup.e_management.service.serviceImpl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zcgroup.e_management.entity.User;
 import com.zcgroup.e_management.mapper.UserMapper;
@@ -10,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class UserServiceImpl implements UserService {
@@ -38,9 +42,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<User> getUsers(Page pages) {
-        Page<User> page=new Page<>(pages.getCurrent(),pages.getSize());
-        userMapper.selectPage(page,null);
-        return page;
+    public List<User> getUsers(int current, int size) {
+        Page page=new Page<>(current,size);
+        List<User> users=userMapper.selectPage(page,null).getRecords();
+        return users;
     }
+    @Override
+    public Integer findAllCount() {
+        Integer count = userMapper.selectCount(null);
+        return count;
+    }
+
+
 }
